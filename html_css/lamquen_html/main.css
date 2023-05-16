@@ -1,0 +1,80 @@
+:root{
+    --loc: rgb(16, 3, 3);
+}
+h2{
+    color: var(--loc);
+    
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.fb{
+    padding: 8px 20px;
+
+    color: #fff;
+    background-color: rgb(66, 103, 178);
+
+    /* Bỏ gạch chân mặc định của thẻ a */
+    text-decoration: none;
+}
+.fb:hover{
+    background-color: rgba(112, 112, 212); 
+}
+.box{
+    margin-top: 40px;
+    width: 100vw;
+    height: 20vh;
+    background-color:  rgb(226, 144, 43);
+    position: sticky;
+    top: 0px;
+    text-align: center;
+    line-height: 20vh;
+  
+}
+
+.box:hover{
+    background-color: blue;
+}
+/* .box{
+    background-color: greenyellow;
+    padding: 30px;
+    
+} */
+html{
+    font-size: 100%;
+}
+h1{    
+    
+    left: 300px;
+    font-size: 5rem;
+    color: var(--loc);
+}
+.para1 {
+        color: rgb(109, 146, 36);
+    }
+    /* .para1 .p1{
+        color: rgb(236, 112, 112);
+    } */
+.loc::after{
+    content: "(" attr(href) ") ";
+}
+.box3{
+    width: 100px;
+    height: 100px;
+    color: aqua;
+    background-color: blue;
+    padding: 50px;
+    border: 2px solid #333;
+    box-sizing: border-box;
+    margin-top: 100px;
+   }
+.header{
+    width: 100%;
+    height: 280vh;
+    background-image: linear-gradient(0,rgba(255,0,0,0.1), rgba(0,255,255,0.1)),
+    url(http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcR4TudWuElQ8zTQHhjEvtrYZwAb_n-LEMxYTBE6PJ8R03HjQ2vFAIeFbOvGNQZvZsxe);
+    background-size: cover;
+    background-repeat: no-repeat;
+   }

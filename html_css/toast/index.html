@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./asset/index.css">
+</head>
+<body>
+    
+        <div id="toast">
+        </div>
+
+        <div>
+            <div onclick="btnSuccessToast();" class="btn btn--success"> Show Success Toast</div>
+            <div onclick="btnErrorToast();" class="btn btn--danger"> Show Danger Toast</div>
+        </div> 
+    
+    <script>
+        function toast({
+            title = '',
+            message ='',        
+            type = '',
+            duration = 1000
+        })
+
+        {
+            const main = document.getElementById('toast')
+            if(main){
+                const toast = document.createElement('div')
+
+                const autoRemoveId =setTimeout(function()
+                {
+                    main.removeChild(toast)
+                },duration +1000)
+
+                toast.onclick= function(event){
+                    if(event.target.closest('.toast__close')){
+                        main.removeChild(toast)
+                        clearTimeout(autoRemoveId)
+                    }
+                }
+
+                const icons= {
+                    success:  'fa-solid fa-circle-check',
+                    infor: 'fa-solid fa-circle-info',
+                    warning: 'fa-solid fa-triangle-exclamation',
+                    error:'fa-solid fa-circle-exclamation',
+                }
+                const icon = icons[type]
+                const delay = (duration/1000).toFixed(2)
+                toast.classList.add('toast', `toast--${type}`)
+                toast.style.animation = `toastIn ease .3s, toastOut linear 1s ${delay}s forwards`
+                toast.innerHTML=
+                `
+                    <div class="toast__icon">
+                        <i class="${icon}"></i>
+                    </div>
+                    <div class="toast__body">
+                        <h3 class="toast__title">${title}</h3>
+                        <p class="toast__msg">${message}</p>
+                    </div>
+                    <div class="toast__close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                `
+                main.appendChild(toast)
+            }
+        }
+
+        function btnSuccessToast(){
+            toast({
+            title: 'Success',
+            message: 'Đăng kí thành công, chúc mừng bạn.',
+            type: 'success',
+            duration: 1000
+
+        })
+        }   
+
+        function btnErrorToast(){
+            toast({
+            title: 'Error',
+            message: 'Đăng kí không thành công.',
+            type: 'error',
+            duration: 1000
+
+        })
+        }
+
+
+    </script>
+</body>
+</html>
